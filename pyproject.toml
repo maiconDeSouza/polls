@@ -1,0 +1,19 @@
+[project]
+name = "polls"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "mcn"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "autopep8 (>=2.3.2,<3.0.0)",
+    "tomli (>=2.2.1,<3.0.0)",
+    "django (>=5.1.6,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
