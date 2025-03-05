@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+{% block head_title %}Enquetes{% endblock head_title %}
+
+{% block content %}
+    <section class="container title">
+        <h2>Escolha uma enquete participe da Brincadeira</h2>
+    </section>
+    <section class="container polls-list">
+        <ul class="ul-polls">
+            {% for poll in polls  %}
+                <li>
+                    <a href="{% url "poll_detail" poll.pk %}">
+                        <h3>{{poll.question_text}}</h3>
+                        <span>Tem {{poll.total_votes}} votos</span>
+                    </a href="">
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock content %}
+

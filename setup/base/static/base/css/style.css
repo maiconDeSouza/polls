@@ -1,0 +1,208 @@
+/*
+########## Config ##########
+*/
+
+:root {
+    /* Cores principais */
+    --primary-color: #4A90E2;  /* Azul para botões e destaques */
+    --secondary-color: #50E3C2;  /* Verde claro para realces */
+    --tertiary-color: #2E6EB5; 
+    --quaternary-color: #357ABD;
+    --accent-color: #F5A623;  /* Laranja para avisos e ações importantes */
+
+    /* Cores de fundo */
+    --background-color: #F9FAFB;  /* Fundo principal, quase branco */
+    --card-background: #FFFFFF;  /* Fundo para cards e containers */
+    --modal-background: #FFFFFF;  /* Fundo para modais */
+
+    /* Cores do texto */
+    --text-color: #333333;  /* Preto suave para melhor leitura */
+    --text-muted: #777777;  /* Cinza para textos secundários */
+    --link-color: #4A90E2;  /* Links na mesma cor do primário */
+    --danger-color: #E74C3C;  /* Vermelho para erros e mensagens importantes */
+
+    /* Sombras e bordas */
+    --border-color: #E1E1E1;  /* Cinza claro para separadores */
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra suave para cartões */
+
+    /* Estados */
+    --success-color: #2ECC71;  /* Verde para mensagens de sucesso */
+    --warning-color: #F39C12;  /* Amarelo para alertas */
+    --danger-color: #E74C3C;  /* Vermelho para erros e mensagens importantes */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 5rem 1fr 4.375rem;
+    background-color: var(--background-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+}
+
+footer {
+    background-color: var(--text-color);
+}
+
+header, footer {
+    color: var(--card-background);
+}
+
+.container {
+    max-width: 57.5rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.btn {
+    border: none;
+    padding: .625rem .9375rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*
+########## Config - end ##########
+*/
+
+
+
+/*
+########## Header ##########
+*/
+
+header div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header div ul {
+    display: flex;
+    gap: 1rem;
+}
+
+header div ul li a {
+    display: block;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: all .6s;
+}
+
+header div ul li a:hover {
+    transform: scale(1.05);
+}
+
+/*
+########## Header - end ##########
+*/
+
+
+/*
+########## Main - Section Title ##########
+*/
+main section.title {
+    display: grid;
+    place-items: center;
+}
+
+/*
+########## Main - Section Title - end ##########
+*/
+
+
+/*
+########## Main - Section Polls List ##########
+*/
+main section.polls-list ul.ul-polls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+}
+
+main section.polls-list ul.ul-polls li {
+    padding: 1rem;
+    background-color: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    transition: all .6s;
+    cursor: pointer;
+}
+
+main section.polls-list ul.ul-polls li:hover {
+    transform: scale(1.05);
+}
+
+main section.polls-list ul.ul-polls li a {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    color: var(--text-color);
+}
+
+/*
+########## Main - Section Polls List - end ##########
+*/
+
+
+/*
+########## Main - Section Vote ##########
+*/
+main section.vote {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 2rem;
+}
+
+
+main section.vote form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+main section.vote form div {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+main section.vote form div button {
+    position: absolute;
+    right: 0;
+    background-color: var(--success-color);
+    color: var(--card-background);
+    font-weight: bold;
+    border: none;
+    transition: all .6s;
+}
+
+main section.vote form div button:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+main section.vote form label {
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+}
