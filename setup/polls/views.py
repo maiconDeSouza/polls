@@ -20,7 +20,6 @@ class PollDetail(View):
     def get(self, request, pk):
         poll = get_object_or_404(Poll, pk=pk)
         choices = get_list_or_404(Choice, poll=pk)
-        print(choices)
         context = {
             'poll': poll,
             'choices': choices
@@ -34,3 +33,21 @@ class PollDetail(View):
         choice.save()
 
         return HttpResponse(f'{choice_id} - {choice.choice_text} - {choice.votes}')
+
+
+class PollVotes(View):
+    def get(self, request, pk):
+        poll = get_object_or_404(Poll, pk=pk)
+        choices = get_list_or_404(Choice, poll=pk)
+        total_votes = poll.total_votes()
+
+        for choice in choices:
+            choice_total_votes = choice.votes
+            porcentagem = (choice_total_votes / total_votes) * 100
+            print(f'{choice.choice_text} - {porcentagem:.2f}%')
+
+        context = {
+            'poll': poll,
+            'choices': choices
+        }
+        return render(request, 'polls/pages/poll_detail.html', context)
