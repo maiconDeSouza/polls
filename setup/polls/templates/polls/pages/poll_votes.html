@@ -3,20 +3,18 @@
 
 {% block content %}
     <div class="container">
-        {% comment %} <section class="vote">
-            <form action="" method="post">
-                <div>
-                    <h2>{{poll.question_text}}</h2>
-                    <button type="submit" class="btn">Votar</button>
-                </div>
-                {% csrf_token %}
-                {% for choice in choices  %}
-                    <label for="choice{{ choice.id }}">
-                        <input type="radio" name="choice" value="{{ choice.id }}" id="choice{{ choice.id }}">
-                        <span>{{ choice.choice_text }}</span>
-                    </label>
+        <section class="result-vote">
+            <div>
+                <h2>{{poll.question_text}}</h2>
+            </div>
+            <ul>
+                {% for choice in choices %}
+                    <li>
+                        <span>{{choice.choice_text}}</span>
+                        <span>{{choice.percentage}}</span>
+                    </li>
                 {% endfor %}
-            </form>
-        </section> {% endcomment %}
+            </ul>
+        </section>
     </div>
 {% endblock content %}

@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.views import View
-from django.http import HttpResponse
+
 
 from setup.polls.models import Poll, Choice
 
@@ -32,7 +32,7 @@ class PollDetail(View):
         choice.votes += 1
         choice.save()
 
-        return HttpResponse(f'{choice_id} - {choice.choice_text} - {choice.votes}')
+        return redirect('poll_votes', pk=pk)
 
 
 class PollVotes(View):
@@ -41,13 +41,13 @@ class PollVotes(View):
         choices = get_list_or_404(Choice, poll=pk)
         total_votes = poll.total_votes()
 
-        for choice in choices:
-            choice_total_votes = choice.votes
-            porcentagem = (choice_total_votes / total_votes) * 100
-            print(f'{choice.choice_text} - {porcentagem:.2f}%')
+        choices_with_percentage = [
+            {'choice_text': choice.choice_text, 'percentage': f'{((choice.votes / total_votes) * 100 if total_votes > 0 else 0):.2f}%'}
+            for choice in choices
+        ]
 
         context = {
             'poll': poll,
-            'choices': choices
+            'choices': choices_with_percentage
         }
-        return render(request, 'polls/pages/poll_detail.html', context)
+        return render(request, 'polls/pages/poll_votes.html', context)

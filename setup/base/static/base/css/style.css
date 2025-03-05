@@ -206,3 +206,29 @@ main section.vote form label {
     border-radius: 8px;
     border: 2px solid var(--border-color);
 }
+
+/*
+########## Main - Section Vote - end ##########
+*/
+
+
+/*
+########## Main - Section result Vote ##########
+*/
+main section.result-vote div h2 {
+    text-align: center;
+}
+
+main section.result-vote ul {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+main section.result-vote ul li {
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+}

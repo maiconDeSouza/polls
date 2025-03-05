@@ -10,15 +10,11 @@
             <h1>Enquentes</h1>
             <nav>
                 <ul>
-                    <li>
-                        <a href="" class="btn">Home</a>
-                    </li>
-                    <li>
-                        <a href="" class="btn">Cadastrar</a>
-                    </li>
-                    <li>
-                        <a href="" class="btn">Login</a>
-                    </li>
+                    {% if user.is_staff %}
+                        {% include "base/partials/menu_staff.html" %}
+                    {% else %}
+                        {% include "base/partials/menu_login.html" %}
+                    {% endif %}
                 </ul>
             </nav>
         </div>
