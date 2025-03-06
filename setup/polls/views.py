@@ -69,7 +69,7 @@ class PollVotes(View):
 @method_decorator(user_passes_test(lambda user: user.is_staff, login_url='login'), name='dispatch')
 class NewPoll(View):
     def get(self, request):
-        pass
+        return render(request, 'polls/pages/new_poll.html')
 
     def post(self, request):
         pass
