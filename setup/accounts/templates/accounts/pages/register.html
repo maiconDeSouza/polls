@@ -3,18 +3,22 @@
 
 {% block content %}
 <div class="container">
-    <section class="login">
+    <section class="register">
         <form method="post">
             {% csrf_token %}
             <label for="id_username">
                 <span>Nome de usuário</span>
-                {{login_form.username}}
+                {{user_form.username}}
             </label>
-            <label for="id_password">
+            <label for="id_password1">
                 <span>Senha</span>
-                {{login_form.password}}
+                {{user_form.password1}}
             </label>
-            <button type="submit" class="btn">Fazer o Login</button>
+            <label for="id_password2">
+                <span>Repita a Senha</span>
+                {{user_form.password2}}
+            </label>
+            <button type="submit" class="btn">Registrar</button>
         </form>
     </section>
 </div>

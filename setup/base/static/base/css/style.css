@@ -232,3 +232,58 @@ main section.result-vote ul li {
     border-radius: 8px;
     border: 2px solid var(--border-color);
 }
+
+
+/*
+########## Main - Section Vote - end ##########
+*/
+
+
+/*
+########## Main - Section Login & Main - Section Register ##########
+*/
+
+main section.login, main section.register {
+    display:  flex;
+    justify-content: center;
+}
+
+main section.login form, main section.register form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+main section.login form label, main section.register form label {
+    display: block;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+main section.login form label span, main section.register form label span {
+    align-self: flex-start;
+}
+
+main section.login form label input, main section.register form label input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
+
+main section.login form button, main section.register form button {
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    font-weight: bold;
+    transition: all .6s;
+}
+
+main section.login form button:hover, main section.register form button:hover {
+    transform: scale(1.05);
+}
