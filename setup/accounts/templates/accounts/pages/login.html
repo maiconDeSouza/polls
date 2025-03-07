@@ -17,5 +17,12 @@
             <button type="submit" class="btn">Fazer o Login</button>
         </form>
     </section>
+    {% if messages %}
+    <ul>
+    {% for msg in messages %}
+        <li class="error">{{ msg }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 {% endblock content %}

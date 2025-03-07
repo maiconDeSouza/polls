@@ -22,7 +22,7 @@ class Index(View):
 class PollDetail(View):
     def get(self, request, pk):
         poll = get_object_or_404(Poll, pk=pk)
-        choices = get_list_or_404(Choice, poll=pk)
+        choices = get_list_or_404(Choice, poll=poll)
         voted = VotedPoll.objects.filter(user=request.user, poll=poll).exists()
 
         if voted:

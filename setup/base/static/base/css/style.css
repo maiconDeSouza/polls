@@ -73,6 +73,10 @@ header, footer {
     cursor: pointer;
 }
 
+.error {
+    color: var(--danger-color);
+}
+
 /*
 ########## Config - end ##########
 */

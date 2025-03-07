@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from django.contrib import messages
 
 
 class Login(View):
@@ -20,6 +21,7 @@ class Login(View):
             login(request, user)
             return redirect('index')
         else:
+            messages.error(request, 'Usuário ou senha inválidos!')
             return redirect('login')
 
 

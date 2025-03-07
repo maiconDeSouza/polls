@@ -9,10 +9,10 @@
         <ul class="ul-polls">
             {% for poll in polls  %}
                 <li>
-                    <a href="{% url "poll_detail" poll.pk %}">
+                    <a href="{% url 'poll_detail' poll.pk %}">
                         <h3>{{poll.question_text}}</h3>
                         <span>Tem {{poll.total_votes}} votos</span>
-                    </a href="">
+                    </a>
                 </li>
             {% endfor %}
         </ul>
