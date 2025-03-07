@@ -53,11 +53,15 @@ class PollVotes(View):
         choices = get_list_or_404(Choice, poll=pk)
         total_votes = poll.total_votes()
 
-        choices_with_percentage = [
-            {'choice_text': choice.choice_text,
-                'percentage': f'{((choice.votes / total_votes) * 100 if total_votes > 0 else 0):.2f}%'}
-            for choice in choices
-        ]
+        choices_with_percentage = sorted(
+            [
+                {'choice_text': choice.choice_text,
+                 'percentage': f'{((choice.votes / total_votes) * 100 if total_votes > 0 else 0):.2f}%'}
+                for choice in choices
+            ],
+            key=lambda x: float(x['percentage'].strip('%')),
+            reverse=True  # Ordena do maior para o menor
+        )
 
         context = {
             'poll': poll,
@@ -72,4 +76,17 @@ class NewPoll(View):
         return render(request, 'polls/pages/new_poll.html')
 
     def post(self, request):
-        pass
+        question_text = request.POST.get('question_text')
+
+        choices = request.POST.getlist('choices')
+
+        if not question_text or len(choices) < 2:
+            return render(request, 'polls/pages/new_poll.html', {'error': 'A enquete deve ter pelo menos duas opções.'})
+
+        poll = Poll.objects.create(
+            question_text=question_text, created_by=request.user)
+
+        for choice_text in choices:
+            Choice.objects.create(poll=poll, choice_text=choice_text)
+
+        return redirect('poll_detail', pk=poll.pk)

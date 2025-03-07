@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('<int:pk>/detail/', views.PollDetail.as_view(), name='poll_detail'),
     path('<int:pk>/votes/', views.PollVotes.as_view(), name='poll_votes'),
-    path('newpoll/', views.NewPoll.as_view, name='newpoll')
+    path('newpoll/', views.NewPoll.as_view(), name='newpoll'),
 ]

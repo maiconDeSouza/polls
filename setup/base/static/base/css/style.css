@@ -287,3 +287,61 @@ main section.login form button, main section.register form button {
 main section.login form button:hover, main section.register form button:hover {
     transform: scale(1.05);
 }
+
+/*
+########## Main - Section Login & Main - Section Register - end ##########
+*/
+
+
+
+/*
+########## Main - Section New Poll ##########
+*/
+main section.new-poll {
+    display: flex;
+    justify-content: center;
+}
+
+main section.new-poll form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+main section.new-poll form label {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+main section.new-poll form label input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+main section.new-poll form ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    gap: 2rem;
+
+}
+
+main section.new-poll form ul li {
+    display: flex;
+    justify-content: center;
+}
+
+main section.new-poll form div button {
+    background-color: var(--success-color);
+    color: var(--card-background);
+    font-weight: bold;
+}
+
+main section.new-poll form div button[type="button"]{
+    background-color: var(--primary-color);
+}

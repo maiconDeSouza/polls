@@ -3,6 +3,33 @@
 
 {% block content %}
     <div class="container">
-        oi
+        <section class="new-poll">
+            <form method="post">
+                {% csrf_token %}
+                <label for="question_text">
+                    <span>Pergunta:</span>
+                    <input type="text" name="question_text" required>
+                </label>
+
+                <ul>
+                    <li>
+                        <label for="choice">
+                            <span>Opção 1:</span>
+                            <input type="text" name="choices" required>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="choice">
+                            <span>Opção 2:</span>
+                            <input type="text" name="choices" required>
+                        </label>
+                    </li>
+                </ul>
+                <div>
+                    <button class="btn" type="submit">Criar Enquetes</button>
+                    <button class="btn" type="button">Adicionar opção</button>
+                </div>
+            </form>
+        </section>
     </div>
 {% endblock content %}
