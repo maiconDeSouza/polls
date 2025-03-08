@@ -211,6 +211,48 @@ main section.vote form label {
     border: 2px solid var(--border-color);
 }
 
+
+/*
+########## Main - Section error ##########
+*/
+
+main section.error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+main section.error-message p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+main section.error-message div {
+    display: flex;
+    justify-content: centers;
+    gap: 2rem;
+}
+
+main section.error-message div a {
+    background-color: var(--success-color);
+    color: var(--card-background);
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    transition: all .6ss;
+}
+
+main section.error-message div a:hover {
+    transform: scale(1.05);
+}
+
+/*
+########## Main - Section error - end ##########
+*/
+
+
 /*
 ########## Main - Section Vote - end ##########
 */

@@ -17,6 +17,13 @@
                     </label>
                 {% endfor %}
             </form>
+            {% if messages %}
+                <ul>
+                    {% for msg in messages %}
+                        <li class="error">{{ msg }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </section>
     </div>
 {% endblock content %}

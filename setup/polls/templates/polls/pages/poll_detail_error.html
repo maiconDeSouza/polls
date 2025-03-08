@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+{% block head_title %}Enquetes{% endblock head_title %}
+
+{% block content %}
+    <div class="container">
+        <section class="error-message">
+            <p class="error">É preciso estar logado para acessar está pagina!</p>
+            <div>
+                <a class="btn" href="{% url "login" %}">Fazer o Login</a>
+                <a class="btn" href="{% url "register" %}">Se Registrar</a>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

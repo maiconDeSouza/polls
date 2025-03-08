@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views import View
 
@@ -18,7 +19,7 @@ class Index(View):
         return render(request, 'polls/pages/index.html', context)
 
 
-@method_decorator(login_required(login_url='login'), name='dispatch')
+@method_decorator(login_required(login_url='poll_detail_error'), name='dispatch')
 class PollDetail(View):
     def get(self, request, pk):
         poll = get_object_or_404(Poll, pk=pk)
@@ -35,6 +36,18 @@ class PollDetail(View):
         return render(request, 'polls/pages/poll_detail.html', context)
 
     def post(self, request, pk):
+        if not request.POST.get('choice'):
+            poll = get_object_or_404(Poll, pk=pk)
+            choices = get_list_or_404(Choice, poll=poll)
+
+            context = {
+                'poll': poll,
+                'choices': choices
+            }
+
+            messages.error(request, 'Você não escolheu nenhuma das opções')
+            return render(request, 'polls/pages/poll_detail.html', context)
+
         poll = get_object_or_404(Poll, pk=pk)
         choice_id = request.POST.get('choice')
         choice = get_object_or_404(Choice, pk=choice_id)
@@ -44,6 +57,11 @@ class PollDetail(View):
         VotedPoll.objects.create(user=request.user, poll=poll)
 
         return redirect('poll_votes', pk=pk)
+
+
+class PollDetailError(View):
+    def get(self, request):
+        return render(request, 'polls/pages/poll_detail_error.html')
 
 
 @method_decorator(login_required(login_url='login'), name='dispatch')
