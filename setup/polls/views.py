@@ -24,7 +24,7 @@ class PollDetail(View):
     def get(self, request, pk):
         poll = get_object_or_404(Poll, pk=pk)
         choices = get_list_or_404(Choice, poll=poll)
-        voted = VotedPoll.objects.filter(user=request.user, poll=poll).exists()
+        voted = VotedPoll.objects.voted(request.user, poll)
 
         if voted:
             return redirect('poll_votes', pk=pk)

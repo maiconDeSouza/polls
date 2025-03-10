@@ -26,10 +26,19 @@ class Choice(models.Model):
         return f'{self.poll.question_text} - {self.choice_text}'
 
 
+class VotedPollManager(models.Manager):
+    def voted(self, user, poll):
+        is_voted = self.filter(user=user, poll=poll).exists()
+
+        return is_voted
+
+
 class VotedPoll(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     voted_at = models.DateTimeField(auto_now_add=True)
+
+    objects = VotedPollManager()
 
     def __str__(self):
         return f'{self.user} votou em {self.poll}'
